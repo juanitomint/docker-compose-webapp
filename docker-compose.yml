@@ -1,0 +1,21 @@
+version: "3"
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: ${NETWORK}/24
+
+services:
+
+
+##### Web APP server  ####
+  web:
+    image: tutum/hello-world
+    
+    networks:
+      default:
+        ipv4_address: ${SUBNETWORK}.80
+    
+    environment:
+       VIRTUAL_HOST: web.${VIRTUAL_HOST}.lab 
